@@ -15,7 +15,7 @@ pipeline {
                 script {
                     echo "building jar"
                     //gv.buildJar()
-                    def test 1 + 3 > 3 ? 'yes' : 'Not at all'
+                    def test 1 + 5 > 3 ? 'yes' : 'Not at all'
                     echo test
                 }
             }
