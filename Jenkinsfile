@@ -50,7 +50,7 @@ pipeline {
                 script {
                     echo "building image"
                     //gv.buildImage()
-                    echo "building version ${NEW_VERSION}"
+                    echo "building version ${params.NEW_VERSION}"
                 }
             }
         }
