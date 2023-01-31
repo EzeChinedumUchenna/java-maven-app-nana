@@ -19,6 +19,7 @@ pipeline {
             steps {
                 script {
                     gv = load "script.groovy"
+                    echo "this is initializing"
                 }
             }
         }
