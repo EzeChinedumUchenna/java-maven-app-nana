@@ -77,8 +77,8 @@ pipeline {
             }
         }
     }   
-    post {
+    /*post {
 
 
-    }
+    }*/
 }
