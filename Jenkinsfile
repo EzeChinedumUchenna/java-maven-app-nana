@@ -38,14 +38,14 @@ pipeline {
             }
         }
         stage("test") {
-            when {
+            /*when {
                 expression{
 
                     BRANCH_NAME == 'main' || BRANCH_NAME == 'dev'
 
                 }
                 
-            }
+            }*/
             steps {  
                 script {
                     echo "building image"
