@@ -1,4 +1,5 @@
 def gv
+
 CODE_CHANGES = getGitChanges() 
 
 pipeline {
@@ -31,10 +32,7 @@ pipeline {
                 }
             steps { 
                 script {
-                    echo "building jar"
-                    //gv.buildJar()
-                    def test = 1 + 5 > 3 ? 'yes' : 'Not at all'
-                    echo test
+                    gv.buildApp()
                 }
             }
         }
@@ -49,9 +47,7 @@ pipeline {
             }
             steps {  
                 script {
-                    echo "building image"
-                    //gv.buildImage()
-                    echo "building version ${NEW_VERSION}"
+                    gv.testApp()
                 }
             }
         }
@@ -64,8 +60,7 @@ pipeline {
             }
             steps {  
                 script {
-                    echo "building image"
-                    //gv.buildImage()
+                    gv.buildingApp() 
                 }
             }
         }

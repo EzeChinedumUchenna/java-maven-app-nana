@@ -1,6 +1,13 @@
-def buildJar() {
+ def buildJar() {
     echo "building the application..."
     sh 'mvn package'
+} 
+
+ def buildApp() {
+    echo "building jar"
+    //gv.buildJar()
+    def test = 1 + 5 > 3 ? 'yes' : 'Not at all'
+    echo test
 } 
 
 def buildImage() {
@@ -12,8 +19,21 @@ def buildImage() {
     }
 } 
 
-def deployApp() {
-    echo 'deploying the application...'
+def testApp() {
+    echo "building image"
+    //gv.buildImage()
+    echo "building version ${NEW_VERSION}"
 } 
+
+def buildingApp() {
+    echo "building image"
+    //gv.buildImage()
+}
+
+def deployApp() {
+    echo "deploying ${params.VERSION}"
+    //gv.deployApp()
+}
+
 
 return this
