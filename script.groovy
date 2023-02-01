@@ -22,7 +22,7 @@ def buildImage() {
 def testApp() {
     echo "building image"
     //gv.buildImage()
-    echo "building version ${NEW_VERSION}"
+    echo "building version ${params.VERSION}"
 } 
 
 def buildingApp() {
