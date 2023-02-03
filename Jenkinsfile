@@ -78,7 +78,7 @@ pipeline {
                     choice(name: 'ENV_1', choices:['dev','staging','prod'], description: '')
                     choice(name: 'ENV_2', choices:['dev','staging','prod'], description: '')
                 }*/
-            }
+            
             steps {
                 echo "deploying the application"
                 /*withCredentials([
