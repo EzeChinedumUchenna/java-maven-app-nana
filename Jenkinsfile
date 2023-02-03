@@ -4,15 +4,18 @@ def gv
 
 pipeline {
     parameters{
-        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.1'], description: '')
-        booleanParam(name: 'executeTests', defaultValue: false, description: '')
+        //string(name: 'VERSION', defaultValue: '', description: 'version to deplay on prod')
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.1'], description: 'This is the version of the maven')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
-    //environment {
-        //NEW_VERSION = '1.3.0'
-    //}
+    /*environment {
+    SERVER_CREDENTIALS = credentials('Demo-server-cred')
+    NEW_VERSION = '1.3.4'
+
+    }  
     /*tool {
         maven 'maven-3.8'
-        // gradle and jdk are the only built tools that you can use on tool
+        // maven, gradle and jdk are the only built tools that you can use on tool
     }*/
     agent any
     stages {
@@ -22,6 +25,7 @@ pipeline {
                 script {
                     gv = load "script.groovy"
                     echo "this is initializing"
+                    echo "this is the new version ${NEW_VERSION}"
                 }
             }
         }
@@ -31,7 +35,8 @@ pipeline {
 
                     BRANCH_NAME == 'main' && CODE_CHANGES == true
                 }*/
-            steps { 
+            steps {
+                sh "mvn install" 
                 script {
                     gv.buildApp()
                 }
@@ -67,6 +72,12 @@ pipeline {
         }
         stage("deploy") {
             steps {
+                echo "deploying the application"
+                /*withCredentials([
+                    usernamePassword(credentials: 'Demo-server-cred', usernameVariable: USER, passwordVariable: PWD)
+                ])
+
+                sh "some script ${USER} , ${PWD}"*/
                 script {
                     gv.deployApp()
                 }
