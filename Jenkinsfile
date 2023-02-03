@@ -87,6 +87,7 @@ pipeline {
                 sh "some script ${USER} , ${PWD}"*/
                 script {
                     gv.deployApp()
+                    echo "Deploying to ${ENV}"
                 }
             }
         }
