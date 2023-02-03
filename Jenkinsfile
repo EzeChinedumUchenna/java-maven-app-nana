@@ -88,8 +88,8 @@ pipeline {
                 sh "some script ${USER} , ${PWD}"*/
                 script {
                     gv.deployApp()
-                    echo "Deploying to ${params.ENV-1}"
-                    echo "Deploying to ${params.ENV-2}"
+                    echo "Deploying to ${ENV-1}"
+                    echo "Deploying to ${ENV-2}"
                 }
             }
         }
