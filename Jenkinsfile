@@ -75,7 +75,7 @@ pipeline {
                 message "select the environment to deploy to"
                 ok "don"
                 parameters{
-                    chioce(name: "ENV", chioces:['dev','staging','prod'], description '')
+                    choice(name: "ENV", choices:['dev','staging','prod'], description '')
                 }
             }
             steps {
