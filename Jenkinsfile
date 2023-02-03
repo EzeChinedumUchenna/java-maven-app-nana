@@ -87,10 +87,10 @@ pipeline {
 
                 sh "some script ${USER} , ${PWD}"*/
                 script {
-                    env.ENV = input message: "select the environment to deploy to", ok: "apply", parameters: [choice(name: 'ENV_1', choices: ['dev','stage', 'prod'], description: '')]
+                    env.ENV = input message: "select the environment to deploy to", ok: "apply", parameters: [choice(name: 'ONE', choices: ['dev','stage', 'prod'], description: '')]
                     //input message: "select the environment to deploy to", ok: "apply", parameters: [choice(name: 'ENV_2', choices: ['dev','stage', 'prod'], description: '')]
                     gv.deployApp()
-                    echo "Deploying to ${ENV_1}"
+                    echo "Deploying to ${ONE}"
                     //echo "Deploying to ${ENV_2}"
                 }
             }
