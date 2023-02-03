@@ -25,7 +25,7 @@ pipeline {
                 script {
                     gv = load "script.groovy"
                     echo "this is initializing"
-                    //echo "this is the new version ${NEW_VERSION}"
+                    echo "this is the new version ${params.VERSION}"
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
                     BRANCH_NAME == 'main' && CODE_CHANGES == true
                 }*/
             steps {
-                sh "mvn install" 
+                //sh "mvn install" 
                 script {
                     gv.buildApp()
                 }
@@ -71,6 +71,13 @@ pipeline {
             }
         }
         stage("deploy") {
+            input {
+                message "select the environment to deploy to"
+                ok "don"
+                parameters{
+                    chioce(name: "ENV", chioces:['dev','staging','prod'], description '')
+                }
+            }
             steps {
                 echo "deploying the application"
                 /*withCredentials([
