@@ -11,9 +11,9 @@ pipeline {
     /*environment {
     SERVER_CREDENTIALS = credentials('Demo-server-cred')
     NEW_VERSION = '1.3.4'
-    */
+    
 
-    }  
+    }  */
     tools {
         maven 'maven-3.8'
         // maven, gradle and jdk are the only built tools that you can use on tool
@@ -101,5 +101,4 @@ pipeline {
 
 
     }*/
-
 }
