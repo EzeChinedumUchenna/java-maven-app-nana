@@ -8,9 +8,9 @@ pipeline {
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.1'], description: 'This is the version of the maven')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
-    /*environment {
-    SERVER_CREDENTIALS = credentials('Demo-server-cred')
-    NEW_VERSION = '1.3.4'
+    environment {
+    //SERVER_CREDENTIALS = credentials('Demo-server-cred')
+    //NEW_VERSION = '1.3.4'
 
     }  
     /*tool {
@@ -87,7 +87,7 @@ pipeline {
 
                 sh "some script ${USER} , ${PWD}"*/
                 script {
-                    env.ONE = input message: "select the environment to deploy to", ok: "apply", parameters: [choice(name: 'ONE', choices: ['dev','stage', 'prod'], description: '')]
+                    env.ENV = input message: "select the environment to deploy to", ok: "apply", parameters: [choice(name: 'ONE', choices: ['dev','stage', 'prod'], description: '')]
                     //input message: "select the environment to deploy to", ok: "apply", parameters: [choice(name: 'ENV_2', choices: ['dev','stage', 'prod'], description: '')]
                     gv.deployApp()
                     echo "Deploying to ${ONE}"
