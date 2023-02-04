@@ -8,9 +8,9 @@ pipeline {
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.1'], description: 'This is the version of the maven')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
-    environment {
-    //SERVER_CREDENTIALS = credentials('Demo-server-cred')
-    //NEW_VERSION = '1.3.4'
+    /*environment {
+    SERVER_CREDENTIALS = credentials('Demo-server-cred')
+    NEW_VERSION = '1.3.4'
 
     }  
     /*tool {
