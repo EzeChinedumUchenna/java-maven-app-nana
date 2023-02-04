@@ -20,7 +20,7 @@ pipeline {
     }
     agent any 
     stages {
-        stage("init") {
+        stage("initiating") {
             
             steps {
                 script {
