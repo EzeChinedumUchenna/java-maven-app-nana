@@ -1,10 +1,10 @@
  def buildJar() {
-    echo "building the application..."
+    echo "packaging the application..."
     sh 'mvn package'
 } 
 
  def buildApp() {
-    echo "building jar"
+    echo "building"
     //gv.buildJar()
     def test = 1 + 5 > 3 ? 'yes' : 'Not at all'
     echo test
@@ -20,9 +20,9 @@ def buildImage() {
 } 
 
 def testApp() {
-    echo "building image"
+    echo "testing App"
     //gv.buildImage()
-    echo "building version ${params.VERSION}"
+    echo "testing App version ${params.VERSION}"
 } 
 
 def buildingApp() {

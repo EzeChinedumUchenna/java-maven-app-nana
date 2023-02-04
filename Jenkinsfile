@@ -30,6 +30,7 @@ pipeline {
                 }
             }
         }
+
         stage("build jar") {
             /*when {
                 expression{
@@ -39,11 +40,12 @@ pipeline {
             steps {
                 //sh "mvn install" 
                 script {
-                    gv.buildApp()
+                    gv.buildJar()
                 }
             }
         }
-        stage("test") {
+
+        stage("testing") {
             /*when {
                 expression{
 
@@ -58,7 +60,7 @@ pipeline {
                 }
             }
         }
-        stage("build image") {
+        stage("building image") {
             when {
 
                 expression {
@@ -71,7 +73,7 @@ pipeline {
                 }
             }
         }
-        stage("deploy") {
+        stage("deploying") {
             /*input {
                 message "select the environment to deploy to"
                 ok "apply"
