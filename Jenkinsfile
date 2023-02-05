@@ -32,11 +32,11 @@ pipeline {
         }
 
         stage("build jar") {
-            /*when {
+            when {
                 expression{
 
-                    BRANCH_NAME == 'main' && CODE_CHANGES == true
-                }*/
+                    BRANCH_NAME == 'main'
+                }
             steps {
                 //sh "mvn install" 
                 script {
@@ -65,6 +65,7 @@ pipeline {
 
                 expression {
                      params.executeTests == true
+                     BRANCH_NAME == 'main'
                 }
             }
             steps {  
@@ -84,6 +85,11 @@ pipeline {
             
             steps {
                 echo "deploying the application"
+                when{
+                    expression{
+                        BRANCH_NAME == 'main'
+                    }
+                }
                 /*withCredentials([
                     usernamePassword(credentials: 'Demo-server-cred', usernameVariable: USER, passwordVariable: PWD)
                 ])
