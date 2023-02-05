@@ -90,7 +90,7 @@ pipeline {
             //         }
             //     }
 
-            // when {
+            when {
 
             expression {
                     params.executeTests == true
