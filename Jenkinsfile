@@ -83,6 +83,14 @@ pipeline {
                     choice(name: 'ENV_1', choices:['dev','staging','prod'], description: '')
                     choice(name: 'ENV_2', choices:['dev','staging','prod'], description: '')
                 }*/
+
+            when {
+
+            expression {
+                     params.executeTests == true
+                     BRANCH_NAME == 'main'
+                }
+            }
             
             steps {
                 echo "deploying the application"
