@@ -37,6 +37,7 @@ pipeline {
 
                     BRANCH_NAME == 'main'
                 }
+            }
             steps {
                 //sh "mvn install" 
                 script {
@@ -85,8 +86,8 @@ pipeline {
             
             steps {
                 echo "deploying the application"
-                when{
-                    expression{
+                when {
+                    expression {
                         BRANCH_NAME == 'main'
                     }
                 }
