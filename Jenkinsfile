@@ -94,7 +94,7 @@ pipeline {
 
             expression {
                      params.executeTests == true
-                     BRANCH_NAME == 'main'
+                    
                 }
             }
             
