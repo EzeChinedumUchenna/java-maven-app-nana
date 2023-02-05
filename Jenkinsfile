@@ -84,16 +84,17 @@ pipeline {
                     choice(name: 'ENV_2', choices:['dev','staging','prod'], description: '')
                 }*/
 
-            when {
-                    expression {
-                        BRANCH_NAME == 'main'
-                    }
-                }
+            // when {
+            //         expression {
+            //             BRANCH_NAME == 'main'
+            //         }
+            //     }
 
-            when {
+            // when {
 
             expression {
-                     params.executeTests == true
+                    params.executeTests == true
+                    BRANCH_NAME == 'main'
                     
                 }
             }
