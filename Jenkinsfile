@@ -85,6 +85,12 @@ pipeline {
                 }*/
 
             when {
+                    expression {
+                        BRANCH_NAME == 'main'
+                    }
+                }
+
+            when {
 
             expression {
                      params.executeTests == true
@@ -94,11 +100,7 @@ pipeline {
             
             steps {
                 echo "deploying the application"
-                when {
-                    expression {
-                        BRANCH_NAME == 'main'
-                    }
-                }
+                
                 /*withCredentials([
                     usernamePassword(credentials: 'Demo-server-cred', usernameVariable: USER, passwordVariable: PWD)
                 ])
