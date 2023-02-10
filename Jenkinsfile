@@ -84,7 +84,7 @@ pipeline {
                 }
             }
         }
-        stage("deploying") {
+        stage("deploying...") {
             /*input {
                 message "select the environment to deploy to"
                 ok "apply"
