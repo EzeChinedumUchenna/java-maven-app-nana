@@ -74,7 +74,7 @@ pipeline {
             }
             steps {  
                 script {
-                    buildImage()
+                    buildImage('nedumdocker/maven-java-nana:jma-2.0')
                 }
             }
         }
