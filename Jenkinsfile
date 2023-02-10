@@ -44,7 +44,7 @@ pipeline {
             steps {
                 //sh "mvn install" 
                 script {
-                    gv.buildJar()
+                    buildJar()
                 }
             }
         }
@@ -74,7 +74,7 @@ pipeline {
             }
             steps {  
                 script {
-                    gv.buildImage()
+                    buildImage()
                 }
             }
         }
