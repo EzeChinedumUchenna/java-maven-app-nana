@@ -1,6 +1,12 @@
 #!/usr/bin/env groovy
 
-@Library('Jenkins-share-Lib')       /*Note If you dont have import or def below use @Library('Jenkins-share-Lib')_*/
+//@Library('Jenkins-share-Lib')       /*Note this is used when you confiured jenkins share lib on the global level and If you dont have import or def below use @Library('Jenkins-share-Lib')_*/
+
+library identifier: 'jenkins-shared-lib@main', retriever: modernSCM(
+    [$class: 'GitSCMSource',
+    remote: 'https://github.com/EzeChinedumUchenna/Jenkins-Share-Library-Project.git',
+    credentialsId: 'nedu-cred']
+)
 def gv
 
 //CODE_CHANGES = getGitChanges() 
