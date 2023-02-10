@@ -1,9 +1,12 @@
+#!/usr/bin/env groovy
+
+@Library('Jenkins-share-Lib')       /*Note If you dont have import or def below use @Library('Jenkins-share-Lib')_*/
 def gv
 
 //CODE_CHANGES = getGitChanges() 
 
 pipeline {
-    parameters{
+    parameters{ 
         //string(name: 'VERSION', defaultValue: '', description: 'version to deplay on prod')
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.1'], description: 'This is the version of the maven')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
@@ -41,7 +44,7 @@ pipeline {
             steps {
                 //sh "mvn install" 
                 script {
-                    gv.buildJar()
+                    buildJar()
                 }
             }
         }
@@ -71,7 +74,7 @@ pipeline {
             }
             steps {  
                 script {
-                    gv.buildImage()
+                    buildImage('nedumdocker/maven-java-nana:jma-2.0')
                 }
             }
         }
