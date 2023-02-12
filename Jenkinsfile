@@ -54,7 +54,7 @@ pipeline {
             }
         }
 
-        stage("build jar") {
+        stage("build jar..") {
             when {
                 expression{
 
