@@ -40,6 +40,20 @@ pipeline {
             }
         }
 
+        stage('increment Version') {
+            steps  {
+                script {
+                    echo 'incrementing App version...'
+                    sh 'mvn build-helper:parse-version versions:set \
+                    -DnweVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.newIncrementalVersion} versions:commit'
+                 
+                    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
+                    def version = matcher[0][1]
+                    env.IMAGE_VERSION = "${version}-${BUILD_NUMBER}" 
+                 }
+            }
+        }
+
         stage("build jar") {
             when {
                 expression{
@@ -80,7 +94,7 @@ pipeline {
             }
             steps {  
                 script {
-                    buildImage('nedumdocker/maven-java-nana:jma-2.0')
+                    buildImage("nedumdocker/maven-java-nana:${IMAGE_VERSION}")
                 }
             }
         }
