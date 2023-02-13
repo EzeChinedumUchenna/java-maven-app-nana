@@ -56,8 +56,8 @@ pipeline {
         stage("build jar...") {
             when {
                 expression{
-
-                    BRANCH_NAME == 'main'
+                    params.executeTests == true
+                    BRANCH_NAME == 'Jenkins-job'
                 }
             }
             steps {
