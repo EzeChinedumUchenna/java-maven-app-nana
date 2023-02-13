@@ -144,8 +144,8 @@ pipeline {
                 script {
                     echo "commit version update ...."
                     withCredentials([usernamePassword(credentialsId: 'nedu-cred', passwordVariable: 'PWD', usernameVariable: 'USER')]){
-                        // sh 'git config --global user.email "ezechinedum504@gmail.com"'
-                        // sh 'git config --global user.name "Chinedum Eze"'
+                        sh 'git config --global user.email "ezechinedum504@gmail.com"'
+                        sh 'git config --global user.name "EzeChinedumUchenna"'
                         sh "git remote set-url origin https://${USER}:${PASS}@github.com/EzeChinedumUchenna/java-maven-app-nana.git"
                         sh 'git add .'
                         sh 'git commit -m "Ci: version bump'
