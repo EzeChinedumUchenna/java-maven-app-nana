@@ -115,7 +115,7 @@ pipeline {
             when {
 
             expression {
-                    params.executeTests == true
+                    params.executeTests == false
                     BRANCH_NAME == 'main'
                     
                 }
