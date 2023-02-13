@@ -29,7 +29,7 @@ pipeline {
     }
     agent any 
     stages {
-        stage("initiating......") {
+        stage("initiating.......") {
             
             steps {
                 script {
