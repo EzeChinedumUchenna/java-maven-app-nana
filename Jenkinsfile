@@ -88,7 +88,7 @@ pipeline {
 
                 expression {
                      params.executeTests == true
-                     BRANCH_NAME == 'main'
+                     BRANCH_NAME == 'Jenkins-job'
                 }
             }
             steps {  
@@ -115,8 +115,8 @@ pipeline {
             when {
 
             expression {
-                    params.executeTests == false
-                    BRANCH_NAME == 'main'
+                    params.executeTests == true
+                    BRANCH_NAME == 'Jenkins-job'
                     
                 }
             }
