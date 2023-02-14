@@ -142,7 +142,7 @@ pipeline {
         stage("commit version update") {
             steps{
                 script {
-                    echo "commit version update ...."
+                    echo "commit version update .."
                     withCredentials([usernamePassword(credentialsId: 'nedu-cred', passwordVariable: 'PWD', usernameVariable: 'USER')]){
                         sh 'git config --global user.email "ezechinedum504@gmail.com"'
                         sh 'git config --global user.name "EzeChinedumUchenna"'
