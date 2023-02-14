@@ -146,7 +146,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'nedu-cred', passwordVariable: 'PWD', usernameVariable: 'USER')]){
                         sh 'git config --global user.email "ezechinedum504@gmail.com"'
                         sh 'git config --global user.name "EzeChinedumUchenna"'
-                        sh "git remote set-url origin https://${USER}:${PWD}@github.com/EzeChinedumUchenna/java-maven-app-nana.git"
+                        sh "git remote set-url origin https://${USER}:${'PWD'}@github.com/EzeChinedumUchenna/java-maven-app-nana.git"
                         sh 'git add .'
                         //sh 'git remote add origin https://github.com/EzeChinedumUchenna/java-maven-app-nana.git'
                         sh 'git commit -m "ci: version bump"'
