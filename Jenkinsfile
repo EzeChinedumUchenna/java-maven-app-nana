@@ -144,8 +144,8 @@ pipeline {
                 script {
                     echo "commit version update .........."
                     withCredentials([usernamePassword(credentialsId: 'nedu-cred', passwordVariable: 'PWD', usernameVariable: 'USER')]){
-                        sh 'git config --global user.email "ezechinedum504@gmail.com"'
-                        sh 'git config --global user.name "EzeChinedumUchenna"'
+                        sh 'git config --global user.email "nedumjenkins@gmail.com"'
+                        sh 'git config --global user.name "nedumJenkins"'
                         sh "git remote set-url origin https://${USER}:${PWD}@github.com/EzeChinedumUchenna/java-maven-app-nana.git"
                         sh 'git add .'
                         //sh 'git remote add origin https://github.com/EzeChinedumUchenna/java-maven-app-nana.git'
@@ -155,6 +155,13 @@ pipeline {
                 }
             }
         }
+
+        /* Note this with the above stage implace Jenkins would push the latest change to the Git and that would trigger an \
+        another build. This would cause a loop. Therefore we need to tell git to save and abort any commit made from Jenkins and to 
+        to do that we would  need a plugin called "Ignore Committer Strategy". Get the plugin > On the Build click on configure > 
+        > Add 'Ignore Committer Strategy' and add the Jenkins email address (for this project I used nedumJenkins) and check the button below it
+        Search for Bult strategies > Therefore whenver the Jenkins trigger a commit to 
+        the github, the commit wont trigger a new build */
     }   
     /*post {
 
