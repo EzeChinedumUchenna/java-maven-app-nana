@@ -123,18 +123,7 @@ pipeline {
             
             steps {
                 echo "deploying the application"
-                sshagent(['NedumServer_Key']) {
-                    sh 'ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244'
-                }  //This is used when you are using ssh key and not password. Note you will need a plugin called SSH Agent
-
-
-                withCredentials([usernamePassword(credentialsId: 'docker-ub-credentials', passwordVariable: 'PWD', usernameVariable: 'USER')]){
-                    /*sh 'sudo apt install docker.io'*/ //This does not work whem u login with Private Key. Thus I did it manually
-                    
-                    sh "docker login --username ${USER} --password ${PWD}"
-                    sh "docker run -p 5060:5060 nedumdocker/maven-java-nana:${IMAGE_VERSION}"
-                    
-                }
+                
                 
                 /*withCredentials([
                     usernamePassword(credentials: 'Demo-server-cred', usernameVariable: USER, passwordVariable: PWD)
@@ -147,6 +136,19 @@ pipeline {
                     gv.deployApp()
                     echo "Deploying to ${params.ONE}"
                     echo "Deploying to ${params.TWO}"
+                }
+
+                sshagent(['NedumServer_Key']) {
+                    sh 'ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244'
+                }  //This is used when you are using ssh key and not password. Note you will need a plugin called SSH Agent
+
+
+                withCredentials([usernamePassword(credentialsId: 'docker-ub-credentials', passwordVariable: 'PWD', usernameVariable: 'USER')]){
+                    /*sh 'sudo apt install docker.io'*/ //This does not work whem u login with Private Key. Thus I did it manually
+                    
+                    sh "docker login --username ${USER} --password ${PWD}"
+                    sh "docker run -p 5060:5060 nedumdocker/maven-java-nana:${IMAGE_VERSION}"
+                    
                 }
             }
         }
