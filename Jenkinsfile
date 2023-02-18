@@ -149,7 +149,7 @@ pipeline {
                     
                         //sh "docker login --username ${USER} --password ${PWD}"
                         
-                    }
+                    
                     
                 }
             }
