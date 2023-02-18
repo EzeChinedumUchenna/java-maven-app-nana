@@ -142,7 +142,7 @@ pipeline {
                     def dockerRun = "docker run -p 8080:8080 -d nedumdocker/maven-java-nana:${IMAGE_VERSION}"
                     def restartDockerAlways = "docker update nedumdocker/maven-java-nana:${IMAGE_VERSION} --restart always"
                     sshagent(['NedumServer_Key']) {
-                        sh "ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244 ${dockerRun} ${restartDockerAlways}"
+                        sh "ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244 ${dockerRun}"
                   //This is used when you are using ssh key and not password. Note you will need a plugin called SSH Agent
 
 
