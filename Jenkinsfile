@@ -125,7 +125,9 @@ pipeline {
                 echo "deploying the application"
                 sshagent(['NedumServer_Key']) {
                     sh 'ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244'
-                }
+                }  //This is used when you are using ssh key and not password. Note you will need a plugin called SSH Agent
+
+
                 withCredentials([usernamePassword(credentialsId: 'docker-ub-credentials', passwordVariable: 'PWD', usernameVariable: 'USER')]){
                     sh 'sudo apt install docker.io'
                     
