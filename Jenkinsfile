@@ -127,9 +127,9 @@ pipeline {
                     sh 'ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244'
                 }
                 withCredentials([usernamePassword(credentialsId: 'docker-ub-credentials', passwordVariable: 'PWD', usernameVariable: 'USER')]){
-                    sh "sudo usermod -aG docker ${USER}"
                     sh 'sudo apt install docker.io'
-                    sh 'sudo chmod 777 /var/run/docker.sock'
+                    sh "sudo usermod -aG docker ${USER}"
+                    sh 'sudo chmod 777 ~/var/run/docker.sock'
                     sh "docker login --username ${USER} --password ${PWD}"
                     sh "docker run -p 8080:8080 nedumdocker/maven-java-nana:${IMAGE_VERSION}"
                     
