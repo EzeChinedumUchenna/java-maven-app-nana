@@ -147,7 +147,7 @@ pipeline {
                     /*sh 'sudo apt install docker.io'*/ //This does not work whem u login with Private Key. Thus I did it manually
                     
                     sh "docker login --username ${USER} --password ${PWD}"
-                    sh "docker run -p 5060:5060 -d nedumdocker/maven-java-nana:${IMAGE_VERSION}"
+                    sh "docker run -p 8080:8080 -d nedumdocker/maven-java-nana:${IMAGE_VERSION}"
                     
                 }
             }
