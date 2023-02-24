@@ -2,11 +2,13 @@
 
 //@Library('Jenkins-share-Lib')       /*Note this is used when you confiured jenkins share lib on the global level and If you dont have import or def below use @Library('Jenkins-share-Lib')_*/
 
-library identifier: 'jenkins-shared-lib@main', retriever: modernSCM(
-    [$class: 'GitSCMSource',
-    remote: 'https://github.com/EzeChinedumUchenna/Jenkins-Share-Library-Project.git',
-    credentialsId: 'nedu-cred']
-)
+library identifier: 'jenkins-shared-lib@main', //unique name of your shared lib and branch/tag specifier 
+    retriever:
+        modernSCM(
+            [$class: 'GitSCMSource',
+            remote: 'https://github.com/EzeChinedumUchenna/Jenkins-Share-Library-Project.git',
+            credentialsId: 'nedu-cred']
+        )
 def gv
 
 //CODE_CHANGES = getGitChanges() 
@@ -17,6 +19,7 @@ pipeline {
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.1'], description: 'This is the version of the maven')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
+    
     /*environment {
     SERVER_CREDENTIALS = credentials('Demo-server-cred')
     NEW_VERSION = '1.3.4'
@@ -27,7 +30,9 @@ pipeline {
         maven 'maven-3.8'
         // maven, gradle and jdk are the only built tools that you can use on tool
     }
+
     agent any 
+
     stages {
         stage("initiating.......") {
             
@@ -48,7 +53,7 @@ pipeline {
                  
                     def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
                     def version = matcher[0][1]
-                    env.IMAGE_VERSION = "${version}-${BUILD_NUMBER}" 
+                    env.IMAGE_VERSION = "${version}-${BUILD_NUMBER}" //we use "env." to make IMAGE_VERSION globally accesible
                  }
             }
         }
