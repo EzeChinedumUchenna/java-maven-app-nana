@@ -14,7 +14,7 @@ services:
       - nedum-folder: /var/lib/mypostgress-folder
     networks:
       - nedum-network
-    port:
+    ports:
       - 5432:5432
     environment:
       - POSTGRES_PASSWORD=Fitb@123
