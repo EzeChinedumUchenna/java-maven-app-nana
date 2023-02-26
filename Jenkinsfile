@@ -144,10 +144,12 @@ pipeline {
                 }
 
                 script{
-                    def dockerRun = "docker run -p 8080:8080 -d nedumdocker/maven-java-nana:${IMAGE_VERSION}"
-                    def restartDockerAlways = "docker update nedumdocker/maven-java-nana:${IMAGE_VERSION} --restart always"
+                    // def dockerRun = "docker run -p 8080:8080 -d nedumdocker/maven-java-nana:${IMAGE_VERSION}" - This is a docker command used when we are using just docker file but now we want to use docker compose
+                    def dockerComposeCommand = 'docker-compose -f docker-compose.yaml up'
                     sshagent(['NedumServer_Key']) {
-                        sh "ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244 ${dockerRun}"
+                        sh "scp copy docker-compose.yaml chinedumeze@20.127.217.244:/home/chinedumeze"
+                        //sh "ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244 ${dockerRun}"
+                        sh "ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244 ${dockerComposeCommand}"
                   //This is used when you are using ssh key and not password. Note you will need a plugin called SSH Agent
 
 
