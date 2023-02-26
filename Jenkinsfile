@@ -138,7 +138,7 @@ pipeline {
                 script {
                     env.ENV = input message: "select the environment to deploy to", ok: "apply", parameters: [choice(name: 'ONE', choices: ['dev','stage', 'prod'], description: '')]
                     env.ENV = input message: "select the environment to deploy to", ok: "apply", parameters: [choice(name: 'TWO', choices: ['dev','stage', 'prod'], description: '')]
-                    gv.deployApp()
+                    //gv.deployApp()
                     echo "Deploying to ${params.ONE}"
                     echo "Deploying to ${params.TWO}"
                 }
@@ -149,7 +149,8 @@ pipeline {
                     sshagent(['NedumServer_Key']) {
                         sh "scp copy docker-compose.yaml chinedumeze@20.127.217.244:/home/chinedumeze"
                         //sh "ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244 ${dockerRun}"
-                        sh "ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244 ${dockerComposeCommand}"
+                        //sh "ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244 ${dockerComposeCommand}" - But incase we want to execute a script instead of one cmd on the instance then we would need to have a script where all the cmd would be
+                        sh "ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244 ${dockerComposeCommand}" 
                   //This is used when you are using ssh key and not password. Note you will need a plugin called SSH Agent
 
 

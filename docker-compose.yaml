@@ -1,0 +1,30 @@
+version: '3.8'
+volumes:
+  nedum-folder:
+networks:
+  nedum-network:
+
+
+services:
+
+  postgres:
+    container_name:  nedum-postgress
+    image: postgres:13
+    volumes:
+      - nedum-folder: /var/lib/mypostgress-folder
+    networks:
+      - nedum-network
+    port:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=Fitb@123
+
+  java-maven-app:
+    container_name: nedum-java-maven-app
+    image: nedumdocker/maven-java-nana:${IMAGE_VERSION}
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    networks:
+      - nedum-network
