@@ -21,7 +21,7 @@ services:
     container_name: nedum-java-maven-app
     image: nedumdocker/maven-java-nana:1.1.7-71
     ports:
-      - 5060:8080
+      - 8080:8080
     depends_on:
       - postgres
     networks:
