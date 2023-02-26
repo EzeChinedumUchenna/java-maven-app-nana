@@ -1,4 +1,4 @@
-version: '2.4'
+version: '3.8'
 volumes:
   nedum-folder:
 networks:
@@ -9,7 +9,7 @@ services:
 
   postgres:
     container_name:  nedum-postgress
-    image: postgres:13
+    image: postgres
     volumes:
       - nedum-folder: /var/lib/mypostgress-folder
     networks:
@@ -21,7 +21,7 @@ services:
 
   java-maven-app:
     container_name: nedum-java-maven-app
-    image: nedumdocker/maven-java-nana:1.1.7-67
+    image: nedumdocker/maven-java-nana:${IMAGE_VERSION}
     ports:
       - 8080:8080
     depends_on:
