@@ -145,7 +145,7 @@ pipeline {
 
                 script{
                     // def dockerRun = "docker run -p 8080:8080 -d nedumdocker/maven-java-nana:${IMAGE_VERSION}" - This is a docker command used when we are using just docker file but now we want to use docker compose
-                    def dockerComposeCommand = 'docker-compose -f docker-compose.yaml up'
+                    def dockerComposeCommand = 'docker-compose -f docker-compose.yaml up --detach'
                     sshagent(['NedumServer_Key']) {
                         sh "scp copy docker-compose.yaml chinedumeze@20.127.217.244:/home/chinedumeze"
                         //sh "ssh -o StrictHostKeyChecking=no chinedumeze@20.127.217.244 ${dockerRun}"
