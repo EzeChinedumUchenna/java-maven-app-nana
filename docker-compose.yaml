@@ -1,6 +1,6 @@
 version: '3'
-volumes:
-  nedum-folder:
+# volumes:
+#   nedum-folder:
 networks:
   nedum-network:
 
@@ -10,8 +10,6 @@ services:
   postgres:
     container_name:  nedum-postgress
     image: postgres
-    volumes:
-      - nedum-folder: /var/lib/mypostgress-folder
     networks:
       - nedum-network
     ports:
