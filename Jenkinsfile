@@ -145,7 +145,8 @@ pipeline {
 
                 script{
                     // def dockerRun = "docker run -p 8080:8080 -d nedumdocker/maven-java-nana:${IMAGE_VERSION}" - This is a docker command used when we are using just docker file but now we want to use docker compose
-                    def dockerComposeCommand = "bash ./serverCmds.sh" //This "severCmd.sh" is a file and it needs to be availble on the remote server 
+                    def Image = "nedumdocker/maven-java-nana:${IMAGE_VERSION}"
+                    def dockerComposeCommand = "bash ./serverCmds.sh ${Image}" //This "severCmd.sh" is a file and it needs to be availble on the remote server 
                     sshagent(['NedumServer_Key']) {
                         catchError {sh "scp copy serverCmds.sh chinedumeze@20.127.217.244:/home/chinedumeze"}
                         catchError {sh "scp copy docker-compose.yaml chinedumeze@20.127.217.244:/home/chinedumeze"}
