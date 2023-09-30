@@ -125,10 +125,10 @@ pipeline {
                 echo "deploying the application"
                 
                 /*withCredentials([
-                    usernamePassword(credentials: 'Demo-server-cred', usernameVariable: USER, passwordVariable: PWD)
+                    usernamePassword(credentialsId: 'Demo-server-cred', usernameVariable: 'USER', passwordVariable: 'PWD')
                 ])
 
-                sh "some script ${USER} , ${PWD}"*/
+                sh "some script $USER , $PWD"*/
                 script {
                     env.ENV = input message: "select the environment to deploy to", ok: "apply", parameters: [choice(name: 'ONE', choices: ['dev','stage', 'prod'], description: '')]
                     env.ENV = input message: "select the environment to deploy to", ok: "apply", parameters: [choice(name: 'TWO', choices: ['dev','stage', 'prod'], description: '')]
