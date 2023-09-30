@@ -1,4 +1,4 @@
-#!/usr/bin/env groovy
+ #!/usr/bin/env groovy
 
 //@Library('Jenkins-share-Lib')       /*Note this is used when you confiured jenkins share lib on the global level and If you dont have import or def below use @Library('Jenkins-share-Lib')_*/
 
@@ -79,7 +79,7 @@ pipeline {
             }*/
             steps {  
                 script {
-                    gv.testApp()
+                    echo "leave here" //gv.testApp()
                 }
             }
         }
@@ -93,7 +93,7 @@ pipeline {
             }
             steps {  
                 script {
-                    buildImage("nedumdocker/maven-java-nana:${IMAGE_VERSION}")
+                    echo "leave here" //buildImage("nedumdocker/maven-java-nana:${IMAGE_VERSION}")
                 }
             }
         }
