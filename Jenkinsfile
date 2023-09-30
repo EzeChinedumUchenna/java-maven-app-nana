@@ -1,4 +1,4 @@
- !#/usr/bin/env groovy
+ #!/usr/bin/env groovy
 
 //@Library('Jenkins-share-Lib')       /*Note this is used when you confiured jenkins share lib on the global level and If you dont have import or def below use @Library('Jenkins-share-Lib')_*/
 
